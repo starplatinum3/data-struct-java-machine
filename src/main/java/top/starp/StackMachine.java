@@ -31,6 +31,7 @@ SML或F#模型），并且有一个称为
 这是一个Java程序，但可能用C编写；确实如此
 不依赖面向对象或垃圾收集。 */
 
+//import com.sun.org.apache.bcel.internal.generic.SWAP;
 import top.starp.util.ArrayUtil;
 
 import java.util.Collections;
@@ -40,11 +41,19 @@ class Machine {
             SCST = 0, SVAR = 1, SADD = 2, SSUB = 3, SMUL = 4, SPOP = 5, SSWAP = 6;
 
     public static void main(String[] args) {
-        final int[] rpn1 = {SCST, 17, SVAR, 0, SVAR, 1, SADD, SSWAP, SPOP};
-        System.out.println(seval(rpn1));
-        final int[] rpn2 = {SCST, 17, SCST, 22, SCST, 100, SVAR, 1, SMUL,
-                SSWAP, SPOP, SVAR, 1, SADD, SSWAP, SPOP};
-        System.out.println(seval(rpn2));
+//        final int[] rpn1 = {SCST, 17, SVAR, 0, SVAR, 1, SADD, SSWAP, SPOP};
+//        System.out.println(seval(rpn1));
+//        final int[] rpn2 = {SCST, 17, SCST, 22, SCST, 100, SVAR, 1, SMUL,
+//                SSWAP, SPOP, SVAR, 1, SADD, SSWAP, SPOP};
+//        System.out.println(seval(rpn2));
+
+//        final int[] rpnAdd = {SCST,2,SCST,3,SVAR,0,SVAR,0,SADD, SSWAP,SPOP,SMUL};
+//        final int[] rpnAdd = {SCST,2,SCST,3,SVAR,0,SVAR,1,SADD, SSWAP,SPOP,SMUL};
+//        Index -2 out of bounds for length 1000
+        final int[] rpnAdd = {SCST,2,SCST,3,SVAR,0,SVAR,0,SADD,SMUL};
+//        18
+
+        System.out.println(seval(rpnAdd));
     }
 
     static int seval(int[] code) {
@@ -90,6 +99,9 @@ class Machine {
                     break;
                 // 栈顶-  现在的指令
                 case SADD:
+//                    Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException:
+//                    Index -2 out of bounds for length 1000
+
                     stack[sp - 1] = stack[sp - 1] + stack[sp];
                     sp--;
                     break;
