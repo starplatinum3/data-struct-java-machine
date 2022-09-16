@@ -47,6 +47,8 @@ public class QuickSort {
             //先看右边，依次往左递减
 //            右边比他大的还要一直往左看 想要小的
 //            找到一个比基准值小的 我要把他往前面放
+// 2 2 3 4 1 2 6
+// 2 2  还是 要找前面的 只有1 是要停止了
             while (temp<=arr[j]&&i<j) {
                 j--;
             }
@@ -59,6 +61,9 @@ public class QuickSort {
             printer.printArr(i,j);
 //            ArrayUtil.printMarked(arr,Arrays.asList(i,j));
             //如果满足条件则交换
+            // 找到基准的位置 i 是比基准大了的位置了 j 是比基准小了的位置了
+            // 大的位置肯定要在右边啊 但是不符合啊 就是要swap 
+            // 如果左边还是比右边小的话 应该是不用swap的吧 ，这里是左边比右边大了？
             if (i<j) {
                 t = arr[j];
                 arr[j] = arr[i];
