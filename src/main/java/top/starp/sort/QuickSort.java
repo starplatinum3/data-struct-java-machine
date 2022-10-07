@@ -62,8 +62,10 @@ public class QuickSort {
 //            ArrayUtil.printMarked(arr,Arrays.asList(i,j));
             //如果满足条件则交换
             // 找到基准的位置 i 是比基准大了的位置了 j 是比基准小了的位置了
-            // 大的位置肯定要在右边啊 但是不符合啊 就是要swap 
+            // 大的位置肯定要在右边啊 但是不符合啊 就是要swap
             // 如果左边还是比右边小的话 应该是不用swap的吧 ，这里是左边比右边大了？
+//            i的位置现在是比较大的 然后 如果他们 还是 i在左边的话 就是要swap
+//            5 i   ,  4 j
             if (i<j) {
                 t = arr[j];
                 arr[j] = arr[i];
